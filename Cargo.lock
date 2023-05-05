@@ -39,7 +39,7 @@ dependencies = [
  "headers",
  "http",
  "http-body",
- "hyper 0.14.26",
+ "hyper",
  "itoa",
  "matchit",
  "memchr",
@@ -293,28 +293,6 @@ dependencies = [
  "httpdate",
  "itoa",
  "pin-project-lite",
- "tokio",
- "tower-service",
- "tracing",
- "want",
-]
-
-[[package]]
-name = "hyper"
-version = "0.14.26"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ab302d72a6f11a3b910431ff93aae7e773078c769f0a3ef15fb9ec692ed147d4"
-dependencies = [
- "bytes",
- "futures-channel",
- "futures-core",
- "futures-util",
- "http",
- "http-body",
- "httparse",
- "httpdate",
- "itoa",
- "pin-project-lite",
  "socket2",
  "tokio",
  "tower-service",
@@ -457,7 +435,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "axum",
- "hyper 0.14.23",
+ "hyper",
  "serde",
  "tokio",
  "uuid",

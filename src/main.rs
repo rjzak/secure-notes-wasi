@@ -5,12 +5,13 @@ use axum::extract::Path;
 use axum::response::{Html, IntoResponse, Redirect};
 use axum::routing::{get, post};
 use axum::{Extension, Form, Router};
+use anyhow::Context;
 use serde::Deserialize;
 use uuid::Uuid;
 
 #[derive(Default)]
 struct State {
-    notes: RwLock<HashMap<uuid::Uuid, String>>,
+    notes: RwLock<HashMap<Uuid, String>>,
 }
 
 #[derive(Deserialize)]
@@ -32,12 +33,12 @@ async fn main() -> anyhow::Result<()> {
         let addr = SocketAddr::from(([0, 0, 0, 0], 8443));
         axum::Server::bind(&addr)
             .serve(app(state).into_make_service())
-            .await?;
+            .await
+            .context("failed to make web application")?;
     }
     #[cfg(target_os = "wasi")]
     {
         use std::os::wasi::io::FromRawFd;
-        tracing::debug!("listening");
         let std_listener = unsafe { std::net::TcpListener::from_raw_fd(3) };
         std_listener
             .set_nonblocking(true)
