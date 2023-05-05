@@ -100,7 +100,7 @@ async fn save(
         Err(_) => "/".into(),
     };
 
-    Redirect::temporary(&next_url)
+    Redirect::to(&next_url)
 }
 
 async fn view(
