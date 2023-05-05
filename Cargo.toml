@@ -3,7 +3,7 @@ hyper = { git = "https://github.com/rjzak/hyper", branch = "wasi_wip" }
 
 [package]
 name = "secure-notes-wasi"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 [dependencies]
